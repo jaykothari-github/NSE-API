@@ -23,9 +23,10 @@ def overview(request):
 def get_data(request):
     if request.method == 'POST':
         print(request.data,'------------------------------------------')
+        symbol = request.data['symbol']
         start = request.data['start'].split('-')
         end = request.data['end'].split('-')
-        sbin = get_history(symbol='SBIN',
+        sbin = get_history(symbol=symbol,
                     start=date(int(start[0]),int(start[1]),int(start[2])),
                     end=date(int(end[0]),int(end[1]),int(end[2])))
         d = dict(sbin)
